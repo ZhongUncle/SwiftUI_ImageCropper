@@ -54,11 +54,10 @@ struct CropperView: View {
     @State private var newPositionCrop: CGSize = .zero
     var body: some View {
         ZStack {
+            //背景
             Rectangle()
                 .ignoresSafeArea()
             VStack {
-                
-                
                 ZStack {
                     ZStack {
                         Image(uiImage: inputImage)
@@ -105,14 +104,11 @@ struct CropperView: View {
                                             currentPositionX.height = currentPositionCrop.height
                                             currentPositionY.width = currentPositionCrop.width
                                             currentPositionY.height = currentPositionCrop.height
-                                        
-                                            
                                         }
                                         .onEnded { value in
                                             //移动结束后，让当前坐标的值等于之前的值加上的坐标
                                             currentPositionCrop.width = min(max(value.translation.width + newPositionCrop.width, -imageDisplayWidth/2+cropWidth/2), imageDisplayWidth/2-cropWidth/2)
                                             currentPositionCrop.height = min(max(value.translation.height + newPositionCrop.height, -imageDisplayHeight/2+cropHeight/2), imageDisplayHeight/2-cropHeight/2)
-
                                             //让new等于现在的坐标
                                             self.newPositionCrop = self.currentPositionCrop
                                             
@@ -122,10 +118,10 @@ struct CropperView: View {
                             //Sides
                             //Top
                             Rectangle()
-//                                .frame(width: 20, height: 20)
-                                .frame(width: cropWidth + cropWidthAdd, height: 10)
+                                .frame(width: cropWidth + cropWidthAdd, height: 2)
                                 .offset(x: currentPositionS.width, y: currentPositionS.height - cropHeight/2)
                                 .foregroundColor(Color.pink)
+                                .padding(.vertical)
                                 .gesture(
                                     DragGesture()
                                         .onChanged { value in
@@ -191,9 +187,10 @@ struct CropperView: View {
                             
                             //Buttom
                             Rectangle()
-                                .frame(width: cropWidth + cropWidthAdd, height: 10)
+                                .frame(width: cropWidth + cropWidthAdd, height: 2)
                                 .foregroundColor(Color.pink)
                                 .offset(x: currentPositionX.width, y: currentPositionX.height+cropHeight/2)
+                                .padding(.vertical)
                                 .gesture(
                                     DragGesture()
                                         .onChanged { value in
@@ -260,9 +257,10 @@ struct CropperView: View {
                             
                             //Leading
                             Rectangle()
-                                .frame(width: 10, height: cropHeight + cropHeightAdd)
+                                .frame(width: 2, height: cropHeight + cropHeightAdd)
                                 .foregroundColor(Color.pink)
                                 .offset(x: currentPositionZ.width-cropWidth/2, y: currentPositionZ.height)
+                                .padding(.horizontal)
                                 .gesture(
                                     DragGesture()
                                         .onChanged { value in
@@ -332,9 +330,10 @@ struct CropperView: View {
                             
                             //Trailing
                             Rectangle()
-                                .frame(width: 10, height: cropHeight + cropHeightAdd)
+                                .frame(width: 2, height: cropHeight + cropHeightAdd)
                                 .foregroundColor(Color.pink)
                                 .offset(x: currentPositionY.width + cropWidth/2, y: currentPositionY.height)
+                                .padding(.horizontal)
                                 .gesture(
                                     DragGesture()
                                         .onChanged { value in
