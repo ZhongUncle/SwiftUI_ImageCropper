@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+let screenHeight = UIScreen.main.bounds.height
+let screenWidth = UIScreen.main.bounds.width
+
 struct ContentView: View {
     var body: some View {
         Text("Hello, world!")

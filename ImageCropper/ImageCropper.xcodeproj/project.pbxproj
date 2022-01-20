@@ -11,6 +11,7 @@
 		62FECADE2798E05400F77B4B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FECADD2798E05400F77B4B /* ContentView.swift */; };
 		62FECAE02798E05500F77B4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62FECADF2798E05500F77B4B /* Assets.xcassets */; };
 		62FECAE32798E05500F77B4B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62FECAE22798E05500F77B4B /* Preview Assets.xcassets */; };
+		62FECB0427999BAA00F77B4B /* CropperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FECB0327999BAA00F77B4B /* CropperView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		62FECADD2798E05400F77B4B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		62FECADF2798E05500F77B4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		62FECAE22798E05500F77B4B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		62FECB0327999BAA00F77B4B /* CropperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropperView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				62FECADB2798E05400F77B4B /* ImageCropperApp.swift */,
 				62FECADD2798E05400F77B4B /* ContentView.swift */,
+				62FECB0327999BAA00F77B4B /* CropperView.swift */,
 				62FECADF2798E05500F77B4B /* Assets.xcassets */,
 				62FECAE12798E05500F77B4B /* Preview Content */,
 			);
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62FECADE2798E05400F77B4B /* ContentView.swift in Sources */,
+				62FECB0427999BAA00F77B4B /* CropperView.swift in Sources */,
 				62FECADC2798E05400F77B4B /* ImageCropperApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
