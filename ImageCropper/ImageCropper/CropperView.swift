@@ -12,6 +12,8 @@ import SwiftUI
 
 struct CropperView: View {
     var inputImage: UIImage
+    //后面可以变成自定义的部分
+    @State private var cropBorderColor = Color.pink
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
@@ -120,7 +122,7 @@ struct CropperView: View {
                             Rectangle()
                                 .frame(width: cropWidth + cropWidthAdd, height: 2)
                                 .offset(x: currentPositionS.width, y: currentPositionS.height - cropHeight/2)
-                                .foregroundColor(Color.pink)
+                                .foregroundColor(cropBorderColor)
                                 .padding(.vertical)
                                 .gesture(
                                     DragGesture()
@@ -188,7 +190,7 @@ struct CropperView: View {
                             //Buttom
                             Rectangle()
                                 .frame(width: cropWidth + cropWidthAdd, height: 2)
-                                .foregroundColor(Color.pink)
+                                .foregroundColor(cropBorderColor)
                                 .offset(x: currentPositionX.width, y: currentPositionX.height+cropHeight/2)
                                 .padding(.vertical)
                                 .gesture(
@@ -258,7 +260,7 @@ struct CropperView: View {
                             //Leading
                             Rectangle()
                                 .frame(width: 2, height: cropHeight + cropHeightAdd)
-                                .foregroundColor(Color.pink)
+                                .foregroundColor(cropBorderColor)
                                 .offset(x: currentPositionZ.width-cropWidth/2, y: currentPositionZ.height)
                                 .padding(.horizontal)
                                 .gesture(
@@ -331,7 +333,7 @@ struct CropperView: View {
                             //Trailing
                             Rectangle()
                                 .frame(width: 2, height: cropHeight + cropHeightAdd)
-                                .foregroundColor(Color.pink)
+                                .foregroundColor(cropBorderColor)
                                 .offset(x: currentPositionY.width + cropWidth/2, y: currentPositionY.height)
                                 .padding(.horizontal)
                                 .gesture(
