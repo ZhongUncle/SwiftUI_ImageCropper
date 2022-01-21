@@ -736,7 +736,15 @@ struct CropperView: View {
                     
                     Button (action : {
                         cropMode = 1
-                        cropHeight = cropWidth*9/16
+                        cropWidth = cropHeight*16/9
+                        if currentPositionCrop.width >= imageDisplayWidth/2 - cropWidth/2{
+                            currentPositionCrop.width = imageDisplayWidth/2 - cropWidth/2
+                            operateOnEnd()
+                        }else if currentPositionCrop.width <= -imageDisplayWidth/2 + cropWidth/2{
+                            currentPositionCrop.width = -imageDisplayWidth/2 + cropWidth/2
+                            operateOnEnd()
+                        }
+//                        cropHeight = cropWidth*9/16
                     }) {
                         Text("16:9")
                             .padding(.all, 10)
@@ -748,7 +756,8 @@ struct CropperView: View {
                     
                     Button (action : {
                         cropMode = 2
-                        cropHeight = cropWidth*3/4
+                        cropWidth = cropHeight*4/3
+//                        cropHeight = cropWidth*3/4
                     }) {
                         Text("4:3")
                             .padding(.all, 10)
@@ -820,23 +829,4 @@ struct CropperView: View {
         self.newPositionX = self.currentPositionX
         self.newPositionY = self.currentPositionY
     }
-}
-
-func cropImage(_ inputImage: UIImage, toRect cropRect: CGRect, viewWidth: CGFloat, viewHeight: CGFloat) -> UIImage?
-{
-    let imageViewScale = max(inputImage.size.width / viewWidth,
-                             inputImage.size.height / viewHeight)
-    // Scale cropRect to handle images larger than shown-on-screen size
-    let cropZone = CGRect(x:cropRect.origin.x * imageViewScale,
-                          y:cropRect.origin.y * imageViewScale,
-                          width:cropRect.size.width * imageViewScale,
-                          height:cropRect.size.height * imageViewScale)
-    // Perform cropping in Core Graphics
-    guard let cutImageRef: CGImage = inputImage.cgImage?.cropping(to:cropZone)
-    else {
-        return nil
-    }
-    // Return image to UIImage
-    let croppedImage: UIImage = UIImage(cgImage: cutImageRef)
-    return croppedImage
 }
