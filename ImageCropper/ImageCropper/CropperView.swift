@@ -736,7 +736,13 @@ struct CropperView: View {
                     
                     Button (action : {
                         cropMode = 1
-                        cropWidth = cropHeight*16/9
+                        cropHeight = cropWidth*9/16
+                        if cropWidth > cropHeight{
+                            cropWidth = cropHeight*16/9
+                        }else{
+                            cropHeight = cropWidth*9/16
+                        }
+                        
                         if currentPositionCrop.width >= imageDisplayWidth/2 - cropWidth/2{
                             currentPositionCrop.width = imageDisplayWidth/2 - cropWidth/2
                             operateOnEnd()
@@ -744,7 +750,6 @@ struct CropperView: View {
                             currentPositionCrop.width = -imageDisplayWidth/2 + cropWidth/2
                             operateOnEnd()
                         }
-//                        cropHeight = cropWidth*9/16
                     }) {
                         Text("16:9")
                             .padding(.all, 10)
@@ -756,8 +761,19 @@ struct CropperView: View {
                     
                     Button (action : {
                         cropMode = 2
-                        cropWidth = cropHeight*4/3
-//                        cropHeight = cropWidth*3/4
+                        if cropWidth > cropHeight{
+                            cropWidth = cropHeight*4/3
+                        }else{
+                            cropHeight = cropWidth*3/4
+                        }
+                        
+                        if currentPositionCrop.width >= imageDisplayWidth/2 - cropWidth/2{
+                            currentPositionCrop.width = imageDisplayWidth/2 - cropWidth/2
+                            operateOnEnd()
+                        }else if currentPositionCrop.width <= -imageDisplayWidth/2 + cropWidth/2{
+                            currentPositionCrop.width = -imageDisplayWidth/2 + cropWidth/2
+                            operateOnEnd()
+                        }
                     }) {
                         Text("4:3")
                             .padding(.all, 10)
