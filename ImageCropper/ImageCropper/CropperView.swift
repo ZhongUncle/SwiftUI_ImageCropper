@@ -14,6 +14,7 @@ struct CropperView: View {
     var inputImage: UIImage
     //后面可以变成自定义的部分
     @State private var cropBorderColor = Color.pink
+    @State private var cropperOutsideOpacity = 0.4
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
@@ -73,9 +74,30 @@ struct CropperView: View {
                                 return AnyView(EmptyView())
                             })
 
-                        
-                        //裁剪框
                         ZStack {
+                            //外围半透明遮罩
+                            //左边
+                            Rectangle()
+                                .opacity(cropperOutsideOpacity)
+                                .frame(width: (imageDisplayWidth/2 - (cropWidth/2 - currentPositionCrop.width + cropWidthAdd/2)), height: imageDisplayHeight)
+                                .offset(x: -imageDisplayWidth/2 + (imageDisplayWidth/2 - (cropWidth/2 - currentPositionCrop.width + cropWidthAdd/2))/2)
+                            //右边
+                            Rectangle()
+                                .opacity(cropperOutsideOpacity)
+                                .frame(width: imageDisplayWidth/2 - (cropWidth/2 + currentPositionCrop.width + cropWidthAdd/2), height: imageDisplayHeight)
+                                .offset(x: imageDisplayWidth/2 - (imageDisplayWidth/2 - (cropWidth/2 + currentPositionCrop.width + cropWidthAdd/2))/2)
+                            //上边
+                            Rectangle()
+                                .opacity(cropperOutsideOpacity)
+                                .frame(width: cropWidth + cropWidthAdd, height: imageDisplayHeight/2 - (cropHeight/2 - currentPositionCrop.height + cropHeightAdd/2))
+                                .offset(x: currentPositionCrop.width, y: -imageDisplayHeight/2 + (imageDisplayHeight/2 - (cropHeight/2 - currentPositionCrop.height + cropHeightAdd/2))/2)
+                            //下边
+                            Rectangle()
+                                .opacity(cropperOutsideOpacity)
+                                .frame(width: cropWidth + cropWidthAdd, height: imageDisplayHeight/2 - (cropHeight/2 + currentPositionCrop.height + cropHeightAdd/2))
+                                .offset(x: currentPositionCrop.width, y: imageDisplayHeight/2 - (imageDisplayHeight/2 - (cropHeight/2 + currentPositionCrop.height + cropHeightAdd/2))/2)
+                            
+                            //裁剪框
                             Rectangle()
                                 .fill(Color.white.opacity(0.1))
                                 .frame(width: cropWidth+cropWidthAdd, height: cropHeight+cropHeightAdd)
@@ -88,7 +110,7 @@ struct CropperView: View {
                                             //max和min用于防止出界
                                             currentPositionCrop.width = min(max(value.translation.width + newPositionCrop.width, -imageDisplayWidth/2+cropWidth/2), imageDisplayWidth/2-cropWidth/2)
                                             currentPositionCrop.height = min(max(value.translation.height + newPositionCrop.height, -imageDisplayHeight/2+cropHeight/2), imageDisplayHeight/2-cropHeight/2)
-                                            //各个角的坐标其实和Crop的一样，只是zx的减去了一半crop的偏移量作为额外的偏移量
+                                            //各个角的坐标其实和Crop的一样，只是zs之类的的减去了一半crop的偏移量作为额外的偏移量
                                             currentPositionZS.width = currentPositionCrop.width
                                             currentPositionZS.height = currentPositionCrop.height
                                             currentPositionZX.width = currentPositionCrop.width
