@@ -13,8 +13,8 @@ import SwiftUI
 struct CropperView: View {
     var inputImage: UIImage
     //后面可以变成自定义的部分
-    @State private var cropBorderColor = Color.pink
-    @State private var cropperOutsideOpacity = 0.4
+    @State private var cropBorderColor: Color = Color.white
+    @State private var cropperOutsideOpacity: Double = 0.4
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
@@ -99,7 +99,7 @@ struct CropperView: View {
                             
                             //裁剪框
                             Rectangle()
-                                .fill(Color.white.opacity(0.1))
+                                .fill(Color.white.opacity(0.01))
                                 .frame(width: cropWidth+cropWidthAdd, height: cropHeight+cropHeightAdd)
                                 .offset(x: currentPositionCrop.width, y: currentPositionCrop.height)
                                 .gesture(
