@@ -23,7 +23,7 @@ Then you can use following code to call it in any View:
 CropperView(inputImage: UIImage, croppedImage: Binding<UIImage>, cropBorderColor: Color?, cropVerticesColor: Color, cropperOutsideOpacity: Double)
 ```
 
-There are some parameters for you to customize or use the cropper(If you want more, please "issue" me):
+There are some parameters for you to customize or use the cropper(**If you want more, please "issue" me**):
 
 | Parameter             | Type             | Default            | Description |
 | -----------           | -----------      | -----------        | ----------- | 
