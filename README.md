@@ -5,9 +5,13 @@ This is a cropper of images using SwiftUI. So you can customize the cropper easi
 I make a demo in iOS/iPadOS to help you know how it works. 
 It will show an image I inputted in advance. Then you can crop it in your mind, and touch the symbol "crop". The cropped image will show!
 It works like below:
+<<<<<<< HEAD
 ![Demo record](https://user-images.githubusercontent.com/78771985/178088383-9cbb93b8-5ade-4620-82cb-447623d93f76.mp4)
 
 
+=======
+https://user-images.githubusercontent.com/78771985/178088778-eebf05f4-8f1f-41c4-b7da-e817602fdf7f.mp4
+>>>>>>> 781cc7b094c7f2470d0ca1d3ca3d2596792486e5
 
 You can follow the Usage to take SwiftUI_ImageCropper into your app or project! Enjoy it!
 
@@ -42,8 +46,9 @@ There are some demoes to show the changes in order (Defult vs Changed).
 ![cropVerticesColor](https://user-images.githubusercontent.com/78771985/178088425-4b0f76b0-0b5a-466d-b4c8-a863259e80a6.jpg)
 
 *cropperOutsideOpacity: Defult vs 0.8*
-![cropperOutsideOpacity](https://user-images.githubusercontent.com/78771985/178088429-1d774b58-d045-4fb2-8d57-9d99481b0d75.jpg)
+![cropperOutsideOpacity](https://user-images.githubusercontent.com/78771985/178088742-788303ae-bc66-480e-95e2-0ca31c280152.jpg)
 
+  
 ## Notices
 
 If you check the source code, you will find some issues "Invalid frame dimension (negative or non-finite)."
