@@ -18,6 +18,7 @@ struct ContentView: View {
         NavigationView {
             
             ZStack {
+                // This will navigate into cropper view
                 NavigationLink(destination: CropperView(inputImage: inputimage, croppedImage: $croppedImage),isActive: $showCropper) { EmptyView() }
                 
                 VStack {
@@ -25,7 +26,6 @@ struct ContentView: View {
                     Image(uiImage: inputimage)
                         .resizable()
                         .scaledToFit()
-//                    .frame(width: screenWidth * 0.6, height: screenHeight/5)
                     
                     Text("Cropped Image")
                     Image(uiImage: croppedImage)

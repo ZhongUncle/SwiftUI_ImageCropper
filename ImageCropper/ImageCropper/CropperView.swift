@@ -7,21 +7,25 @@
 
 import SwiftUI
 
-
-import SwiftUI
-
 struct CropperView: View {
     var inputImage: UIImage
-    //后面可以变成自定义的部分
-    @State private var cropBorderColor: Color = Color.white
-    @State private var cropperOutsideOpacity: Double = 0.4
-    
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-
     @Binding var croppedImage: UIImage
     
+    //后面可以变成自定义的部分
+    //边框颜色
+    var cropBorderColor: Color? = Color.white
+    //顶点图案颜色
+    var cropVerticesColor: Color = Color.pink
+    //遮罩透明度
+    var cropperOutsideOpacity: Double = 0.4
+//    //裁切框样式
+//    @State private var iconVertices: Bool = false
+    
+    
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+    
     @State private var imageDisplayWidth: CGFloat = 0
-    @State var imageDisplayHeight: CGFloat = 0
+    @State private var imageDisplayHeight: CGFloat = 0
 
     @State private var cropWidth = screenWidth * 0.6
     @State private var cropHeight = screenHeight / 5
@@ -55,17 +59,20 @@ struct CropperView: View {
 
     @State private var currentPositionCrop: CGSize = .zero
     @State private var newPositionCrop: CGSize = .zero
+    
     var body: some View {
         ZStack {
-            //背景
+            //黑色背景
             Rectangle()
                 .ignoresSafeArea()
+            
             VStack {
                 ZStack {
                     ZStack {
                         Image(uiImage: inputImage)
+//                            .frame(width: screenWidth)
                             .resizable()
-                            .scaledToFit()
+//                            .scaledToFit()
                             .overlay(GeometryReader{geo -> AnyView in
                                 DispatchQueue.main.async{
                                     self.imageDisplayWidth = geo.size.width
@@ -350,8 +357,6 @@ struct CropperView: View {
                                     }
                                 )
                             
-                            
-                            
                             //Trailing
                             Rectangle()
                                 .frame(width: 2, height: cropHeight + cropHeightAdd)
@@ -427,7 +432,7 @@ struct CropperView: View {
                     //Top-Leading
                     Image(systemName: "arrow.up.left.and.down.right.and.arrow.up.right.and.down.left")
                         .font(.system(size: 12))
-                        .foregroundColor(Color.pink)
+                        .foregroundColor(cropVerticesColor)
                         .background(Circle().frame(width: 20, height: 20).foregroundColor(Color.white))
                         .offset(x: currentPositionZS.width - cropWidth/2, y: currentPositionZS.height - cropHeight/2)
                         .gesture(
@@ -505,7 +510,7 @@ struct CropperView: View {
                     //Bottom-Leading
                     Image(systemName: "arrow.up.left.and.down.right.and.arrow.up.right.and.down.left")
                         .font(.system(size: 12))
-                        .foregroundColor(Color.pink)
+                        .foregroundColor(cropVerticesColor)
                         .background(Circle().frame(width: 20, height: 20).foregroundColor(Color.white))
                         .offset(x: currentPositionZX.width - cropWidth/2, y: currentPositionZX.height + cropHeight/2)
                         .gesture(
@@ -585,7 +590,7 @@ struct CropperView: View {
                     //Bottom-Trailing
                     Image(systemName: "arrow.up.left.and.down.right.and.arrow.up.right.and.down.left")
                         .font(.system(size: 12))
-                        .foregroundColor(Color.pink)
+                        .foregroundColor(cropVerticesColor)
                         .background(Circle().frame(width: 20, height: 20).foregroundColor(Color.white))
                         .offset(x: currentPositionYX.width + cropWidth/2, y: currentPositionYX.height + cropHeight/2)
                         .gesture(
@@ -665,7 +670,7 @@ struct CropperView: View {
                     //Bottom-Topping
                     Image(systemName: "arrow.up.left.and.down.right.and.arrow.up.right.and.down.left")
                         .font(.system(size: 12))
-                        .foregroundColor(Color.pink)
+                        .foregroundColor(cropVerticesColor)
                         .background(Circle().frame(width: 20, height: 20).foregroundColor(Color.white))
                         .offset(x: currentPositionYS.width + cropWidth/2, y: currentPositionYS.height - cropHeight/2)
                         .gesture(
@@ -743,84 +748,104 @@ struct CropperView: View {
                         )
                 }
                 
+                Spacer()
 
                 HStack {
-                    Button (action : {
-                        cropMode = 0
-                    }) {
-                        Text("Custom")
-                            .padding(.all, 10)
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .shadow(color: .gray, radius: 1)
-                            .padding(.top, 50)
-                    }
-                    
-                    Button (action : {
-                        cropMode = 1
-                        cropHeight = cropWidth*9/16
-                        if cropWidth > cropHeight{
-                            cropWidth = cropHeight*16/9
-                        }else{
+                    HStack {
+                        Button (action : {
+                            cropMode = 0
+                        }) {
+                            if cropMode == 0 {
+                                Text("Custom")
+                                    .padding(.all, 10)
+                                    .foregroundColor(.white)
+                                    .background(.gray)
+                                    
+                            } else {
+                                Text("Custom")
+                                    .foregroundColor(.white)
+                                    .padding(.all, 10)
+                            }
+                        }
+                        
+                        Button (action : {
+                            cropMode = 1
                             cropHeight = cropWidth*9/16
+                            if cropWidth > cropHeight{
+                                cropWidth = cropHeight*16/9
+                            }else{
+                                cropHeight = cropWidth*9/16
+                            }
+                            
+                            if currentPositionCrop.width >= imageDisplayWidth/2 - cropWidth/2{
+                                currentPositionCrop.width = imageDisplayWidth/2 - cropWidth/2
+                                operateOnEnd()
+                            }else if currentPositionCrop.width <= -imageDisplayWidth/2 + cropWidth/2{
+                                currentPositionCrop.width = -imageDisplayWidth/2 + cropWidth/2
+                                operateOnEnd()
+                            }
+                        }) {
+                            if cropMode == 1 {
+                                Text("16:9")
+                                    .padding(.all, 10)
+                                    .foregroundColor(.white)
+                                    .background(.gray)
+                            } else {
+                                Text("16:9")
+                                    .padding(.all, 10)
+                                    .foregroundColor(.white)
+                            }
                         }
                         
-                        if currentPositionCrop.width >= imageDisplayWidth/2 - cropWidth/2{
-                            currentPositionCrop.width = imageDisplayWidth/2 - cropWidth/2
-                            operateOnEnd()
-                        }else if currentPositionCrop.width <= -imageDisplayWidth/2 + cropWidth/2{
-                            currentPositionCrop.width = -imageDisplayWidth/2 + cropWidth/2
-                            operateOnEnd()
+                        Button (action : {
+                            cropMode = 2
+                            if cropWidth > cropHeight{
+                                cropWidth = cropHeight*4/3
+                            }else{
+                                cropHeight = cropWidth*3/4
+                            }
+                            
+                            if currentPositionCrop.width >= imageDisplayWidth/2 - cropWidth/2{
+                                currentPositionCrop.width = imageDisplayWidth/2 - cropWidth/2
+                                operateOnEnd()
+                            }else if currentPositionCrop.width <= -imageDisplayWidth/2 + cropWidth/2{
+                                currentPositionCrop.width = -imageDisplayWidth/2 + cropWidth/2
+                                operateOnEnd()
+                            }
+                        }) {
+                            if cropMode == 2 {
+                                Text("4:3")
+                                    .padding(.all, 10)
+                                    .foregroundColor(.white)
+                                    .background(.gray)
+                            } else {
+                                Text("4:3")
+                                    .padding(.all, 10)
+                                    .foregroundColor(.white)
+                            }
                         }
-                    }) {
-                        Text("16:9")
-                            .padding(.all, 10)
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .shadow(color: .gray, radius: 1)
-                            .padding(.top, 50)
                     }
+                    .background(Color.gray.opacity(0.2))
+                    .padding()
+                    
+                    Spacer()
                     
                     Button (action : {
-                        cropMode = 2
-                        if cropWidth > cropHeight{
-                            cropWidth = cropHeight*4/3
-                        }else{
-                            cropHeight = cropWidth*3/4
-                        }
-                        
-                        if currentPositionCrop.width >= imageDisplayWidth/2 - cropWidth/2{
-                            currentPositionCrop.width = imageDisplayWidth/2 - cropWidth/2
-                            operateOnEnd()
-                        }else if currentPositionCrop.width <= -imageDisplayWidth/2 + cropWidth/2{
-                            currentPositionCrop.width = -imageDisplayWidth/2 + cropWidth/2
-                            operateOnEnd()
-                        }
+                        //由于CGRect是先到坐标再开始生成的，所以要这样减去剪裁栏的部分
+                        let rect = CGRect(x: imageDisplayWidth/2 + currentPositionCrop.width - cropWidth/2,
+                                          y: imageDisplayHeight/2 + currentPositionCrop.height - cropHeight/2,
+                                          width: cropWidth,
+                                          height: cropHeight)
+                        croppedImage = cropImage(UIImage(named: "image")!, toRect: rect, viewWidth: imageDisplayWidth, viewHeight: imageDisplayHeight)!
+                        self.presentationMode.wrappedValue.dismiss()
                     }) {
-                        Text("4:3")
+                        Image(systemName: "crop")
                             .padding(.all, 10)
-                            .background(Color.blue)
                             .foregroundColor(.white)
-                            .shadow(color: .gray, radius: 1)
-                            .padding(.top, 50)
+                            .background(Color.gray.opacity(0.2))
                     }
+                    .padding()
                 }
-                Button (action : {
-
-                    //由于CGRect是先到坐标再开始生成的，所以要这样减去剪裁栏的部分
-                    let rect = CGRect(x: imageDisplayWidth/2 + currentPositionCrop.width - cropWidth/2,
-                                      y: imageDisplayHeight/2 + currentPositionCrop.height - cropHeight/2,
-                                      width: cropWidth,
-                                      height: cropHeight)
-                    croppedImage = cropImage(UIImage(named: "image")!, toRect: rect, viewWidth: imageDisplayWidth, viewHeight: imageDisplayHeight)!
-                    self.presentationMode.wrappedValue.dismiss()
-                }) {
-                    Text("Crop Image")
-                        .padding(.all, 10)
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .shadow(color: .gray, radius: 1)
-            }
             }
         }
     }
