@@ -9,8 +9,6 @@ It works like below:
 
 
 
-
-
 You can follow the Usage to take SwiftUI_ImageCropper into your app or project! Enjoy it!
 
 ## Usage
