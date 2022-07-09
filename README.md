@@ -3,21 +3,26 @@
 This is a cropper of images using SwiftUI. So you can customize the cropper easily and crop image in iOS/iPadOS or macOS.
 
 I make a demo in iOS/iPadOS to help you know how it works. 
-It will show an image I inputted in advance. Then you can crop it in your mind, and touch the "􀍳". The cropped image will show!
+It will show an image I inputted in advance. Then you can crop it in your mind, and touch the symbol "crop". The cropped image will show!
 It works like below:
-![Demo](/images/1.gif)
+![Demo record](https://user-images.githubusercontent.com/78771985/178088254-5c7961c5-d5ad-48cc-a901-6b25e4275ba0.gif)
+
+
+https://user-images.githubusercontent.com/78771985/178088383-9cbb93b8-5ade-4620-82cb-447623d93f76.mp4
+
 
 You can follow the Usage to take SwiftUI_ImageCropper into your app or project! Enjoy it!
 
 ## Usage
 ### Step 1
 Copy or drag "CropperView" and "CropImage" to your project. (The package coming soon.)
-![Files' name](/images/2.jpeg)
+
+![Files' name](https://user-images.githubusercontent.com/78771985/178088277-ff7e71a1-dd88-4a14-b387-818b0712f59f.jpeg)
 
 ### Step 2
 Then you can use following code to call it in any View:
 ```
-                CropperView(inputImage: UIImage, croppedImage: Binding<UIImage>, cropBorderColor: Color?, cropVerticesColor: Color, cropperOutsideOpacity: Double)
+CropperView(inputImage: UIImage, croppedImage: Binding<UIImage>, cropBorderColor: Color?, cropVerticesColor: Color, cropperOutsideOpacity: Double)
 ```
 
 There are some parameters for you to customize or use the cropper(If you want more, please "issue" me):
@@ -33,13 +38,13 @@ There are some parameters for you to customize or use the cropper(If you want mo
 There are some demoes to show the changes in order (Defult vs Changed).
 
 *cropBorderColor: Defult vs Color.yellow*
-![cropBorderColor](/images/3.jpg)
+![cropBorderColor](https://user-images.githubusercontent.com/78771985/178088422-c64ef29c-05d9-439f-bc4a-33e1f322a0ab.jpg)
 
 *cropVerticesColor: Defult vs Color.yellow*
-![cropVerticesColor](/images/4.jpg)
+![cropVerticesColor](https://user-images.githubusercontent.com/78771985/178088425-4b0f76b0-0b5a-466d-b4c8-a863259e80a6.jpg)
 
-*cropperOutsideOpacity: Defult vs Color.yellow*
-![cropperOutsideOpacity](/images/5.jpg)
+*cropperOutsideOpacity: Defult vs 0.8*
+![cropperOutsideOpacity](https://user-images.githubusercontent.com/78771985/178088429-1d774b58-d045-4fb2-8d57-9d99481b0d75.jpg)
 
 ## Notices
 
