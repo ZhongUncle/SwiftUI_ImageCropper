@@ -5,7 +5,9 @@ This is a cropper of images using SwiftUI. So you can customize the cropper easi
 I make a demo in iOS/iPadOS to help you know how it works. 
 It will show an image I inputted in advance. Then you can crop it in your mind, and touch the symbol "crop". The cropped image will show!
 It works like below:
+
 https://user-images.githubusercontent.com/78771985/178088778-eebf05f4-8f1f-41c4-b7da-e817602fdf7f.mp4
+
 
 You can follow the Usage to take SwiftUI_ImageCropper into your app or project! Enjoy it!
 
