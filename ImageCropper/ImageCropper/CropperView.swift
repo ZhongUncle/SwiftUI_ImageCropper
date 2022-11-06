@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+let screenWidth = UIScreen.main.bounds.width
+let screenHeight = UIScreen.main.bounds.height
+
 struct CropperView: View {
     var inputImage: UIImage
     @Binding var croppedImage: UIImage
@@ -65,14 +68,12 @@ struct CropperView: View {
             //黑色背景
             Rectangle()
                 .ignoresSafeArea()
-            
+ 
             VStack {
                 ZStack {
                     ZStack {
                         Image(uiImage: inputImage)
-//                            .frame(width: screenWidth)
                             .resizable()
-//                            .scaledToFit()
                             .overlay(GeometryReader{geo -> AnyView in
                                 DispatchQueue.main.async{
                                     self.imageDisplayWidth = geo.size.width
@@ -829,7 +830,8 @@ struct CropperView: View {
                     .padding()
                     
                     Spacer()
-                    
+                    Text("\(imageDisplayHeight)")
+                        .foregroundColor(.white)
                     Button (action : {
                         //由于CGRect是先到坐标再开始生成的，所以要这样减去剪裁栏的部分
                         let rect = CGRect(x: imageDisplayWidth/2 + currentPositionCrop.width - cropWidth/2,

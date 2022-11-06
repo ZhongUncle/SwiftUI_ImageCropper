@@ -7,16 +7,12 @@
 
 import SwiftUI
 
-let screenHeight = UIScreen.main.bounds.height
-let screenWidth = UIScreen.main.bounds.width
-
 struct ContentView: View {
     var inputimage = UIImage(named: "image")!
     @State private var croppedImage: UIImage = UIImage()
     @State private var showCropper = false
     var body: some View {
         NavigationView {
-            
             ZStack {
                 // This will navigate into cropper view
                 NavigationLink(destination: CropperView(inputImage: inputimage, croppedImage: $croppedImage),isActive: $showCropper) { EmptyView() }
@@ -48,7 +44,6 @@ struct ContentView: View {
                 }
             }
         }
-
     }
 }
 
