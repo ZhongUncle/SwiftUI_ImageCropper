@@ -1,19 +1,33 @@
 # SwiftUI_ImageCropper
 ## Introduction
-This is a cropper of images using SwiftUI. So you can customize the cropper easily and crop image in iOS/iPadOS or macOS.
+This is a cropper of images using SwiftUI. So you can customize the cropper easily and crop image in iOS/iPadOS even in macOS.
 
-I make a demo in iOS/iPadOS to help you know how it works. 
+I make a demo in iOS/iPadOS to help you know how it works, and it also shows the size of image in pixel. 
 It will show an image I inputted in advance. Then you can crop it in your mind, and touch the symbol "crop". The cropped image will show!
-It works like below:
+It works like below in iPhone and iPad:
 
-https://user-images.githubusercontent.com/78771985/178088778-eebf05f4-8f1f-41c4-b7da-e817602fdf7f.mp4
+iPhone：
+
+
+
+https://user-images.githubusercontent.com/78771985/203647476-c56e0f02-f3d9-44bf-9deb-d246beab2e93.mp4
+
+
+
+iPad：
+
+
+
+https://user-images.githubusercontent.com/78771985/203647458-cb9dd24e-d026-433d-999d-b2a89eb46a0a.mov
+
+
 
 
 You can follow the Usage to take SwiftUI_ImageCropper into your app or project! Enjoy it!
 
 ## Usage
 ### Step 1
-Copy or drag "CropperView" and "CropImage" to your project. (The package coming soon.)
+Copy or drag "CropperView" and "CropImage" to your project. (The package is developping, coming soon)
 
 ![Files' name](https://user-images.githubusercontent.com/78771985/178088277-ff7e71a1-dd88-4a14-b387-818b0712f59f.jpeg)
 
