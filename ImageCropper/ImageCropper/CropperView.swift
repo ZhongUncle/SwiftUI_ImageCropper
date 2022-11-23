@@ -30,8 +30,8 @@ struct CropperView: View {
     @State private var imageDisplayWidth: CGFloat = 0
     @State private var imageDisplayHeight: CGFloat = 0
 
-    @State private var cropWidth = screenWidth * 0.6
-    @State private var cropHeight = screenHeight / 5
+    @State private var cropWidth: CGFloat = screenHeight/3
+    @State private var cropHeight: CGFloat = screenHeight/3*0.5
     @State private var cropWidthAdd: CGFloat = 0
     @State private var cropHeightAdd: CGFloat = 0
     @State private var cropMode = 0
@@ -74,6 +74,7 @@ struct CropperView: View {
                     ZStack {
                         Image(uiImage: inputImage)
                             .resizable()
+                            .scaledToFit()
                             .overlay(GeometryReader{geo -> AnyView in
                                 DispatchQueue.main.async{
                                     self.imageDisplayWidth = geo.size.width
@@ -87,12 +88,12 @@ struct CropperView: View {
                             //左边
                             Rectangle()
                                 .opacity(cropperOutsideOpacity)
-                                .frame(width: (imageDisplayWidth/2 - (cropWidth/2 - currentPositionCrop.width + cropWidthAdd/2)), height: imageDisplayHeight)
+                                .frame(width: (imageDisplayWidth/2 - (cropWidth/2 - currentPositionCrop.width + cropWidthAdd/2)))
                                 .offset(x: -imageDisplayWidth/2 + (imageDisplayWidth/2 - (cropWidth/2 - currentPositionCrop.width + cropWidthAdd/2))/2)
                             //右边
                             Rectangle()
                                 .opacity(cropperOutsideOpacity)
-                                .frame(width: imageDisplayWidth/2 - (cropWidth/2 + currentPositionCrop.width + cropWidthAdd/2), height: imageDisplayHeight)
+                                .frame(width: imageDisplayWidth/2 - (cropWidth/2 + currentPositionCrop.width + cropWidthAdd/2))
                                 .offset(x: imageDisplayWidth/2 - (imageDisplayWidth/2 - (cropWidth/2 + currentPositionCrop.width + cropWidthAdd/2))/2)
                             //上边
                             Rectangle()
@@ -830,8 +831,7 @@ struct CropperView: View {
                     .padding()
                     
                     Spacer()
-                    Text("\(imageDisplayHeight)")
-                        .foregroundColor(.white)
+                    
                     Button (action : {
                         //由于CGRect是先到坐标再开始生成的，所以要这样减去剪裁栏的部分
                         let rect = CGRect(x: imageDisplayWidth/2 + currentPositionCrop.width - cropWidth/2,

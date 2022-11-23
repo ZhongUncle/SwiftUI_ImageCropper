@@ -18,17 +18,37 @@ struct ContentView: View {
                     // This will navigate into cropper view
                     NavigationLink(destination: CropperView(inputImage: inputimage, croppedImage: $croppedImage),isActive: $showCropper) { EmptyView() }
                     
-                    VStack {
+                    VStack(alignment: .leading) {
                         Text("Origin Image")
-                        Image(uiImage: inputimage)
-                            .resizable()
-                            .scaledToFit()
+                            .font(.title)
+                        HStack {
+                            Image(uiImage: inputimage)
+                                .resizable()
+                                .scaledToFit()
+                            VStack(alignment: .leading) {
+                                Text("Info:")
+                                    .font(.title2)
+                                Text("Width: \(Int(inputimage.size.width))px")
+                                Text("Height: \(Int(inputimage.size.height))px")
+                            }
+                        }
+                        
                         
                         Text("Cropped Image")
-                        Image(uiImage: croppedImage)
-                            .resizable()
-                            .scaledToFit()
+                            .font(.title)
+                        HStack {
+                            Image(uiImage: croppedImage)
+                                .resizable()
+                                .scaledToFit()
                             .frame(width: screenWidth * 0.6, height: screenHeight/5)
+                            
+                            VStack(alignment: .leading) {
+                                Text("Info:")
+                                    .font(.title2)
+                                Text("Width: \(Int(croppedImage.size.width))px")
+                                Text("Height: \(Int(croppedImage.size.height))px")
+                            }
+                        }
                         
                         HStack {
                             Button (action : {
