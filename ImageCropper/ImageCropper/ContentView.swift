@@ -18,52 +18,52 @@ struct ContentView: View {
                     // This will navigate into cropper view
                     NavigationLink(destination: CropperView(inputImage: inputimage, croppedImage: $croppedImage),isActive: $showCropper) { EmptyView() }
                     
-                    VStack(alignment: .leading) {
-                        Text("Origin Image")
-                            .font(.title)
-                        HStack {
-                            Image(uiImage: inputimage)
-                                .resizable()
-                                .scaledToFit()
-                            VStack(alignment: .leading) {
-                                Text("Info:")
-                                    .font(.title2)
-                                Text("Width: \(Int(inputimage.size.width))px")
-                                Text("Height: \(Int(inputimage.size.height))px")
+                    VStack {
+                        VStack(alignment: .leading) {
+                            Text("Origin Image")
+                                .font(.title)
+                            HStack {
+                                Image(uiImage: inputimage)
+                                    .resizable()
+                                    .scaledToFit()
+                                VStack(alignment: .leading) {
+                                    Text("Info:")
+                                        .font(.title2)
+                                    Text("Width: \(Int(inputimage.size.width))px")
+                                    Text("Height: \(Int(inputimage.size.height))px")
+                                }
                             }
-                        }
-                        
-                        
-                        Text("Cropped Image")
-                            .font(.title)
-                        HStack {
-                            Image(uiImage: croppedImage)
-                                .resizable()
-                                .scaledToFit()
-                            .frame(width: screenWidth * 0.6, height: screenHeight/5)
                             
-                            VStack(alignment: .leading) {
-                                Text("Info:")
-                                    .font(.title2)
-                                Text("Width: \(Int(croppedImage.size.width))px")
-                                Text("Height: \(Int(croppedImage.size.height))px")
+                            
+                            Text("Cropped Image")
+                                .font(.title)
+                            HStack {
+                                Image(uiImage: croppedImage)
+                                    .resizable()
+                                    .scaledToFit()
+                                .frame(width: screenWidth * 0.6, height: screenHeight/5)
+                                
+                                VStack(alignment: .leading) {
+                                    Text("Info:")
+                                        .font(.title2)
+                                    Text("Width: \(Int(croppedImage.size.width))px")
+                                    Text("Height: \(Int(croppedImage.size.height))px")
+                                }
                             }
                         }
-                        
-                        HStack {
-                            Button (action : {
-                                showCropper = true
-                            }) {
-                                Text("Crop")
-                                    .padding(.all, 10)
-                                    .background(Color.blue)
-                                    .foregroundColor(.white)
-                                    .shadow(color: .gray, radius: 1)
-                                    .padding(.top, 50)
-                            }
+                        Button (action : {
+                            showCropper = true
+                        }) {
+                            Text("Crop")
+                                .padding(.all, 10)
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .shadow(color: .gray, radius: 1)
+                                .padding(.top, 50)
                         }
                     }
                 }
+                .padding()
             }
         } else {
             // Fallback on earlier versions
@@ -98,6 +98,7 @@ struct ContentView: View {
                         }
                     }
                 }
+                .padding()
             }
         }
     }
