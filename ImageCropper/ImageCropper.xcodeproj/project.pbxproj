@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		620A645B287649730020FE3B /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620A645A287649730020FE3B /* TestView.swift */; };
-		620A645F287654130020FE3B /* VerticesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620A645E287654130020FE3B /* VerticesView.swift */; };
 		6251C05C279B1A4D00B4C1C6 /* CropImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6251C05B279B1A4D00B4C1C6 /* CropImage.swift */; };
 		62FECADC2798E05400F77B4B /* ImageCropperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FECADB2798E05400F77B4B /* ImageCropperApp.swift */; };
 		62FECADE2798E05400F77B4B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FECADD2798E05400F77B4B /* ContentView.swift */; };
@@ -18,8 +16,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		620A645A287649730020FE3B /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
-		620A645E287654130020FE3B /* VerticesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticesView.swift; sourceTree = "<group>"; };
 		6251C05B279B1A4D00B4C1C6 /* CropImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropImage.swift; sourceTree = "<group>"; };
 		62FECAD82798E05400F77B4B /* ImageCropper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageCropper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62FECADB2798E05400F77B4B /* ImageCropperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropperApp.swift; sourceTree = "<group>"; };
@@ -63,8 +59,6 @@
 				62FECADD2798E05400F77B4B /* ContentView.swift */,
 				62FECB0327999BAA00F77B4B /* CropperView.swift */,
 				6251C05B279B1A4D00B4C1C6 /* CropImage.swift */,
-				620A645E287654130020FE3B /* VerticesView.swift */,
-				620A645A287649730020FE3B /* TestView.swift */,
 				62FECADF2798E05500F77B4B /* Assets.xcassets */,
 				62FECAE12798E05500F77B4B /* Preview Content */,
 			);
@@ -150,8 +144,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				62FECADE2798E05400F77B4B /* ContentView.swift in Sources */,
-				620A645F287654130020FE3B /* VerticesView.swift in Sources */,
-				620A645B287649730020FE3B /* TestView.swift in Sources */,
 				6251C05C279B1A4D00B4C1C6 /* CropImage.swift in Sources */,
 				62FECB0427999BAA00F77B4B /* CropperView.swift in Sources */,
 				62FECADC2798E05400F77B4B /* ImageCropperApp.swift in Sources */,
