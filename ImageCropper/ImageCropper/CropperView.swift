@@ -68,6 +68,7 @@ struct CropperView: View {
             //黑色背景
             Rectangle()
                 .ignoresSafeArea()
+                .foregroundColor(.black)
  
             VStack {
                 ZStack {
@@ -87,21 +88,25 @@ struct CropperView: View {
                             //外围半透明遮罩
                             //左边
                             Rectangle()
+                                .foregroundColor(.black)
                                 .opacity(cropperOutsideOpacity)
                                 .frame(width: (imageDisplayWidth/2 - (cropWidth/2 - currentPositionCrop.width + cropWidthAdd/2)))
                                 .offset(x: -imageDisplayWidth/2 + (imageDisplayWidth/2 - (cropWidth/2 - currentPositionCrop.width + cropWidthAdd/2))/2)
                             //右边
                             Rectangle()
+                                .foregroundColor(.black)
                                 .opacity(cropperOutsideOpacity)
                                 .frame(width: imageDisplayWidth/2 - (cropWidth/2 + currentPositionCrop.width + cropWidthAdd/2))
                                 .offset(x: imageDisplayWidth/2 - (imageDisplayWidth/2 - (cropWidth/2 + currentPositionCrop.width + cropWidthAdd/2))/2)
                             //上边
                             Rectangle()
+                                .foregroundColor(.black)
                                 .opacity(cropperOutsideOpacity)
                                 .frame(width: cropWidth + cropWidthAdd, height: imageDisplayHeight/2 - (cropHeight/2 - currentPositionCrop.height + cropHeightAdd/2))
                                 .offset(x: currentPositionCrop.width, y: -imageDisplayHeight/2 + (imageDisplayHeight/2 - (cropHeight/2 - currentPositionCrop.height + cropHeightAdd/2))/2)
                             //下边
                             Rectangle()
+                                .foregroundColor(.black)
                                 .opacity(cropperOutsideOpacity)
                                 .frame(width: cropWidth + cropWidthAdd, height: imageDisplayHeight/2 - (cropHeight/2 + currentPositionCrop.height + cropHeightAdd/2))
                                 .offset(x: currentPositionCrop.width, y: imageDisplayHeight/2 - (imageDisplayHeight/2 - (cropHeight/2 + currentPositionCrop.height + cropHeightAdd/2))/2)
