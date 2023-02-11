@@ -26,12 +26,6 @@ struct ContentView: View {
                                 Image(uiImage: inputimage)
                                     .resizable()
                                     .scaledToFit()
-                                VStack(alignment: .leading) {
-                                    Text("Info:")
-                                        .font(.title2)
-                                    Text("Width: \(Int(inputimage.size.width))px")
-                                    Text("Height: \(Int(inputimage.size.height))px")
-                                }
                             }
                             
                             
@@ -42,13 +36,6 @@ struct ContentView: View {
                                     .resizable()
                                     .scaledToFit()
                                 .frame(width: screenWidth * 0.6, height: screenHeight/5)
-                                
-                                VStack(alignment: .leading) {
-                                    Text("Info:")
-                                        .font(.title2)
-                                    Text("Width: \(Int(croppedImage.size.width))px")
-                                    Text("Height: \(Int(croppedImage.size.height))px")
-                                }
                             }
                         }
                         Button (action : {
