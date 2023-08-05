@@ -71,6 +71,7 @@ struct CropperView: View {
                 .foregroundColor(.black)
  
             VStack {
+                Rectangle()
                 ZStack {
                     ZStack {
                         Image(uiImage: inputImage)
@@ -900,3 +901,4 @@ struct CropperView: View {
         self.newPositionY = self.currentPositionY
     }
 }
+

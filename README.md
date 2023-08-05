@@ -1,6 +1,6 @@
 # SwiftUI_ImageCropper
 ## Introduction
-This is a cropper of images using SwiftUI. So you can customize the cropper easily and crop image in iOS/iPadOS even in macOS.
+This is a simple cropper of images using SwiftUI. So you can customize the cropper easily and crop image in iOS/iPadOS even in macOS.
 
 I make a demo in iOS/iPadOS to help you know how it works, and it also shows the size of image in pixel. 
 It will show an image I inputted in advance. Then you can crop it in your mind, and touch the symbol "crop". The cropped image will show!
@@ -64,3 +64,5 @@ There are some demoes to show the changes in order (Defult vs Changed).
 If you check the source code, you will find some issues "Invalid frame dimension (negative or non-finite)."
 Rest assured, they will not affect the operation.
 
+## Bugs
+If you find a bug, please report it!

@@ -10,8 +10,6 @@ import SwiftUI
 // This function for crop givem image
 func cropImage(_ inputImage: UIImage, toRect cropRect: CGRect, viewWidth: CGFloat, viewHeight: CGFloat) -> UIImage?
 {
-//    let imageViewScale = max(inputImage.size.width / viewWidth,
-//                             inputImage.size.height / viewHeight)
     let imageViewWidthScale = inputImage.size.width / viewWidth
     let imageViewHeightScale = inputImage.size.height / viewHeight
     // Scale cropRect to handle images larger than shown-on-screen size
