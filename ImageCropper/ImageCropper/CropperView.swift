@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-let screenWidth = UIScreen.main.bounds.width
-let screenHeight = UIScreen.main.bounds.height
-
 struct CropperView: View {
     var inputImage: UIImage
     @Binding var croppedImage: UIImage
+    
+    //视图的宽高，不用全局变量是为了方便修改视图：默认横向（landscape）
+    @State private var screenWidth = UIScreen.main.bounds.height
+    @State private var screenHeight = UIScreen.main.bounds.width
     
     //后面可以变成自定义的部分
     //边框颜色
@@ -30,8 +31,8 @@ struct CropperView: View {
     @State private var imageDisplayWidth: CGFloat = 0
     @State private var imageDisplayHeight: CGFloat = 0
 
-    @State private var cropWidth: CGFloat = screenHeight/3
-    @State private var cropHeight: CGFloat = screenHeight/3*0.5
+    @State private var cropWidth: CGFloat = UIScreen.main.bounds.height/3
+    @State private var cropHeight: CGFloat = UIScreen.main.bounds.height/3*0.5
     @State private var cropWidthAdd: CGFloat = 0
     @State private var cropHeightAdd: CGFloat = 0
     @State private var cropMode = 0
@@ -71,9 +72,25 @@ struct CropperView: View {
                 .foregroundColor(.black)
  
             VStack {
-                Rectangle()
-                    .frame(height: screenHeight/10)
-                    .foregroundColor(.white)
+                ZStack(alignment: .leading) {
+                    Rectangle()
+                        .frame(height: screenHeight/15)
+                        .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
+                    .ignoresSafeArea()
+                    
+                    VStack {
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }, label: {
+                            Image(systemName: "chevron.backward")
+                                .padding()
+                                .foregroundColor(Color.white)
+                        })
+                    }
+                    .offset(y: 5)
+                }
+                .ignoresSafeArea()
+                
                 ZStack {
                     ZStack {
                         Image(uiImage: inputImage)
@@ -850,9 +867,20 @@ struct CropperView: View {
                 }
             }
         }
+        .navigationBarHidden(true)
+        .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+            if UIDevice.current.orientation.isPortrait {
+                screenWidth = UIScreen.main.bounds.width
+                screenHeight = UIScreen.main.bounds.height
+            } else if UIDevice.current.orientation.isLandscape {
+                screenWidth = UIScreen.main.bounds.height
+                screenHeight = UIScreen.main.bounds.width
+            }
+            print("screenWidth: \(screenWidth), screenHeight: \(screenHeight)")
+        }
     }
     
-    func crop() -> Void {
+    func crop() {
         //由于CGRect是先到坐标再开始生成的，所以要这样减去剪裁栏的部分
         let rect = CGRect(x: imageDisplayWidth/2 + currentPositionCrop.width - cropWidth/2,
                           y: imageDisplayHeight/2 + currentPositionCrop.height - cropHeight/2,

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6251C05C279B1A4D00B4C1C6 /* CropImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6251C05B279B1A4D00B4C1C6 /* CropImage.swift */; };
+		6287F1572A7E49830070DDCB /* NaviBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6287F1562A7E49830070DDCB /* NaviBarView.swift */; };
 		62FECADC2798E05400F77B4B /* ImageCropperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FECADB2798E05400F77B4B /* ImageCropperApp.swift */; };
 		62FECADE2798E05400F77B4B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FECADD2798E05400F77B4B /* ContentView.swift */; };
 		62FECAE02798E05500F77B4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62FECADF2798E05500F77B4B /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		6251C05B279B1A4D00B4C1C6 /* CropImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropImage.swift; sourceTree = "<group>"; };
+		6287F1562A7E49830070DDCB /* NaviBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaviBarView.swift; sourceTree = "<group>"; };
 		62FECAD82798E05400F77B4B /* ImageCropper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageCropper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62FECADB2798E05400F77B4B /* ImageCropperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropperApp.swift; sourceTree = "<group>"; };
 		62FECADD2798E05400F77B4B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 				62FECADB2798E05400F77B4B /* ImageCropperApp.swift */,
 				62FECADD2798E05400F77B4B /* ContentView.swift */,
 				62FECB0327999BAA00F77B4B /* CropperView.swift */,
+				6287F1562A7E49830070DDCB /* NaviBarView.swift */,
 				6251C05B279B1A4D00B4C1C6 /* CropImage.swift */,
 				62FECADF2798E05500F77B4B /* Assets.xcassets */,
 				62FECAE12798E05500F77B4B /* Preview Content */,
@@ -143,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6287F1572A7E49830070DDCB /* NaviBarView.swift in Sources */,
 				62FECADE2798E05400F77B4B /* ContentView.swift in Sources */,
 				6251C05C279B1A4D00B4C1C6 /* CropImage.swift in Sources */,
 				62FECB0427999BAA00F77B4B /* CropperView.swift in Sources */,

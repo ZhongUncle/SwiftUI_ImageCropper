@@ -7,10 +7,15 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
     var inputimage = UIImage(named: "image")!
     @State private var croppedImage: UIImage = UIImage()
     @State private var showCropper = false
+    
+    @State private var screenWidth = UIScreen.main.bounds.width
+    @State private var screenHeight = UIScreen.main.bounds.height
+    
     var body: some View {
         if #available(iOS 16.0, *) {
             NavigationStack {
@@ -45,7 +50,7 @@ struct ContentView: View {
                             Button (action : {
                                 showCropper = true
                             }) {
-                                Text("Crop")
+                                Text("Go to Crop")
                                     .padding(.all, 10)
                                     .background(Color.blue)
                                     .foregroundColor(.white)
