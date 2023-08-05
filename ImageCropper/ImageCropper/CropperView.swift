@@ -843,7 +843,7 @@ struct CropperView: View {
                                           y: imageDisplayHeight/2 + currentPositionCrop.height - cropHeight/2,
                                           width: cropWidth,
                                           height: cropHeight)
-                        croppedImage = cropImage(UIImage(named: "image")!, toRect: rect, viewWidth: imageDisplayWidth, viewHeight: imageDisplayHeight)!
+                        croppedImage = cropImage(inputImage, toRect: rect, viewWidth: imageDisplayWidth, viewHeight: imageDisplayHeight)!
                         self.presentationMode.wrappedValue.dismiss()
                     }) {
                         Image(systemName: "crop")
