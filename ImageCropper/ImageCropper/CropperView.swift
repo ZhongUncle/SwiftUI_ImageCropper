@@ -72,6 +72,8 @@ struct CropperView: View {
  
             VStack {
                 Rectangle()
+                    .frame(height: screenHeight/10)
+                    .foregroundColor(.white)
                 ZStack {
                     ZStack {
                         Image(uiImage: inputImage)
@@ -838,27 +840,29 @@ struct CropperView: View {
                     
                     Spacer()
                     
-                    Button (action : {
-                        //由于CGRect是先到坐标再开始生成的，所以要这样减去剪裁栏的部分
-                        let rect = CGRect(x: imageDisplayWidth/2 + currentPositionCrop.width - cropWidth/2,
-                                          y: imageDisplayHeight/2 + currentPositionCrop.height - cropHeight/2,
-                                          width: cropWidth,
-                                          height: cropHeight)
-                        croppedImage = cropImage(inputImage, toRect: rect, viewWidth: imageDisplayWidth, viewHeight: imageDisplayHeight)!
-                        self.presentationMode.wrappedValue.dismiss()
-                    }) {
+                    Button(action: {crop()}, label: {
                         Image(systemName: "crop")
                             .padding(.all, 10)
                             .foregroundColor(.white)
                             .background(Color.gray.opacity(0.2))
-                    }
+                    })
                     .padding()
                 }
             }
         }
     }
     
-    func operateOnEnd(){
+    func crop() -> Void {
+        //由于CGRect是先到坐标再开始生成的，所以要这样减去剪裁栏的部分
+        let rect = CGRect(x: imageDisplayWidth/2 + currentPositionCrop.width - cropWidth/2,
+                          y: imageDisplayHeight/2 + currentPositionCrop.height - cropHeight/2,
+                          width: cropWidth,
+                          height: cropHeight)
+        croppedImage = cropImage(inputImage, toRect: rect, viewWidth: imageDisplayWidth, viewHeight: imageDisplayHeight)!
+        self.presentationMode.wrappedValue.dismiss()
+    }
+    
+    func operateOnEnd() {
         cropWidth = cropWidth + cropWidthAdd
         cropHeight = cropHeight + cropHeightAdd
         cropWidthAdd = 0
