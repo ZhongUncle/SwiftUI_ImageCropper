@@ -89,7 +89,7 @@ struct ContentView: View {
                                 Button (action : {
                                     showCropper = true
                                 }) {
-                                    Text("Crop")
+                                    Text("Go to Crop")
                                         .padding(.all, 10)
                                         .background(Color.blue)
                                         .foregroundColor(.white)

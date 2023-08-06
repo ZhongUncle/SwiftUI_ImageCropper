@@ -72,11 +72,11 @@ struct CropperView: View {
                 .foregroundColor(.black)
  
             VStack {
+                //NaviBar
                 ZStack(alignment: .leading) {
                     Rectangle()
-                        .frame(height: screenHeight/15)
+                        .frame(height: (UIDevice.current.model == "iPhone") ? screenHeight/5 : screenHeight/15)
                         .foregroundColor(Color(red: 0.1, green: 0.1, blue: 0.1))
-                    .ignoresSafeArea()
                     
                     VStack {
                         Button(action: {
@@ -87,7 +87,7 @@ struct CropperView: View {
                                 .foregroundColor(Color.white)
                         })
                     }
-                    .offset(y: 5)
+                    .offset(y: (UIDevice.current.model == "iPhone") ? 10 : 5)
                 }
                 .ignoresSafeArea()
                 
@@ -869,6 +869,7 @@ struct CropperView: View {
         }
         .navigationBarHidden(true)
         .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+            
             if UIDevice.current.orientation.isPortrait {
                 screenWidth = UIScreen.main.bounds.width
                 screenHeight = UIScreen.main.bounds.height
@@ -876,6 +877,7 @@ struct CropperView: View {
                 screenWidth = UIScreen.main.bounds.height
                 screenHeight = UIScreen.main.bounds.width
             }
+            
             print("screenWidth: \(screenWidth), screenHeight: \(screenHeight)")
         }
     }
