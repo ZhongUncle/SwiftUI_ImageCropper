@@ -12,7 +12,6 @@
 		62FECADC2798E05400F77B4B /* ImageCropperApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FECADB2798E05400F77B4B /* ImageCropperApp.swift */; };
 		62FECADE2798E05400F77B4B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FECADD2798E05400F77B4B /* ContentView.swift */; };
 		62FECAE02798E05500F77B4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62FECADF2798E05500F77B4B /* Assets.xcassets */; };
-		62FECAE32798E05500F77B4B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62FECAE22798E05500F77B4B /* Preview Assets.xcassets */; };
 		62FECB0427999BAA00F77B4B /* CropperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FECB0327999BAA00F77B4B /* CropperView.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,7 +22,6 @@
 		62FECADB2798E05400F77B4B /* ImageCropperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCropperApp.swift; sourceTree = "<group>"; };
 		62FECADD2798E05400F77B4B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		62FECADF2798E05500F77B4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		62FECAE22798E05500F77B4B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		62FECB0327999BAA00F77B4B /* CropperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropperView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,17 +61,8 @@
 				6287F1562A7E49830070DDCB /* NaviBarView.swift */,
 				6251C05B279B1A4D00B4C1C6 /* CropImage.swift */,
 				62FECADF2798E05500F77B4B /* Assets.xcassets */,
-				62FECAE12798E05500F77B4B /* Preview Content */,
 			);
 			path = ImageCropper;
-			sourceTree = "<group>";
-		};
-		62FECAE12798E05500F77B4B /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				62FECAE22798E05500F77B4B /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -104,7 +93,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					62FECAD72798E05400F77B4B = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -134,7 +123,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62FECAE32798E05500F77B4B /* Preview Assets.xcassets in Resources */,
 				62FECAE02798E05500F77B4B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,6 +182,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -255,6 +244,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -280,7 +270,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ImageCropper/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = ImageCropper/Assets.xcassets;
 				DEVELOPMENT_TEAM = 96V8RMT7SR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -309,7 +299,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ImageCropper/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = ImageCropper/Assets.xcassets;
 				DEVELOPMENT_TEAM = 96V8RMT7SR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
